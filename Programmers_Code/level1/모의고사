@@ -1,0 +1,43 @@
+//  int they_max = *max_element(they.begin(),they.end());
+
+// char 형 숫자 - '0' = int 형 숫자
+
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+int p[3];
+vector<int> solution(vector<int> answers)
+{
+
+    string p1 = "1234512345";
+    string p2 = "21232425";
+    string p3 = "3311224455";
+
+    for (int i = 0; i < answers.size(); i++)
+    {
+        if (p1[i % p1.size()] - '0' == answers[i])
+        {
+            p[0]++;
+        }
+        if (p2[i % p2.size()] - '0' == answers[i])
+        {
+            p[1]++;
+        }
+        if (p3[i % p3.size()] - '0' == answers[i])
+        {
+            p[2]++;
+        }
+    }
+    int max_res = max(max(p[0], p[1]), p[2]);
+    vector<int> answer;
+    for (int i = 0; i < 3; i++)
+    {
+        if (max_res == p[i])
+        {
+            answer.push_back(i + 1);
+        }
+    }
+    return answer;
+}
